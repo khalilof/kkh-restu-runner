@@ -1,0 +1,66 @@
+<div [class.expanded]="expanded" [class.notify]="table.notify" class="dashboard-item">
+  <div [ngClass]="table.status" class="action-box">
+    <div (click)="expand()">
+      <span *ngIf="!expanded">+</span>
+      <span *ngIf="expanded">-</span>
+    </div>
+    <h2># {{table.id}}</h2>
+    <span class="material-symbols-outlined">{{iconName}}</span>
+  </div>
+
+  <div *ngIf="table" class="content">
+
+    <p>
+      <strong>[{{table.status}}]</strong>
+      {{tableStatusDescription}}
+    </p>
+
+    <div *ngIf="table.status === TableStatus.ORDERING">
+      <span>Guests order: </span>
+      <br>
+      <select [(ngModel)]="selectedMenuItem" name="menu" id="menu">
+        <option value="">please select a Menu</option>
+        <option [value]="item" *ngFor="let item of menu">{{item}}</option>
+      </select>
+      <p>{{selectedMenuItem}}</p>
+    </div>
+
+    <div *ngIf="table.status === TableStatus.FINISHED">
+      <h4>Meal:</h4>
+      <p>{{table.currentOrder}}</p>
+    </div>
+
+
+    <button (click)="updateStatus(TableStatus.AVAILABLE)" *ngIf="table.status === TableStatus.CLEANING">
+      <span class="material-symbols-outlined">event_available</span>
+      <br>
+      Set as Available
+    </button>
+    <button (click)="updateStatus(TableStatus.ORDERING)" *ngIf="table.status === TableStatus.AVAILABLE">
+      <span class="material-symbols-outlined">edit_note</span>
+      <br>
+      Set as Ordering
+    </button>
+    <button (click)="updateStatus(TableStatus.ORDERED)" *ngIf="table.status === TableStatus.ORDERING"
+            [disabled]="selectedMenuItem.length <= 0">
+      <span class="material-symbols-outlined">cooking</span>
+      <br>
+      Set as Ordered
+    </button>
+    <button (click)="updateStatus(TableStatus.FINISHED)" *ngIf="table.status === TableStatus.ORDERED">
+      <span class="material-symbols-outlined">done</span>
+      <br>
+      Set as Finished
+    </button>
+    <button (click)="updateStatus(TableStatus.PAID)" *ngIf="table.status === TableStatus.FINISHED">
+      <span class="material-symbols-outlined">paid</span>
+      <br>
+      Set as Paid
+    </button>
+    <button (click)="updateStatus(TableStatus.CLEANING)" *ngIf="table.status === TableStatus.PAID">
+      <span class="material-symbols-outlined">cleaning_services</span>
+      <br>
+      Set as Cleaning
+    </button>
+  </div>
+</div>

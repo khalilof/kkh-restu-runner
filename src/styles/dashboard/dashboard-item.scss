@@ -1,0 +1,146 @@
+.dashboard-item {
+  position: relative;
+  height: 300px;
+  width: 350px;
+  min-width: 250px;
+  display: block;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  box-shadow: 0px 2px 8px -3px grey;
+  border-radius: 5px;
+  transition: width 1s, height 1s;
+
+  &.expanded {
+    height: 600px;
+    width: 500px;
+    min-width: 100%;
+  }
+
+  &.notify {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+  }
+
+  .action-box {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: darkorange;
+    height: 75px;
+    width: 100%;
+
+    line-height: 30px;
+    font-weight: bolder;
+
+    :nth-child(1) {
+      text-align: center;
+      flex-basis: 20%;
+      line-height: 75px;
+      font-size: 75px;
+    }
+
+    :nth-child(2) {
+      text-align: center;
+      flex-basis: 60%;
+      line-height: 75px;
+      font-size: 75px;
+      padding: 0;
+      margin: 0;
+    }
+
+    :nth-child(3) {
+      text-align: center;
+      flex-basis: 20%;
+      line-height: 75px;
+      font-size: 75px;
+    }
+
+
+    &.available {
+      background-color: #f9b4ab;
+    }
+
+    &.ordering {
+      background-color: #fdebd3;
+    }
+
+    &.ordered {
+      background-color: #264e70;
+      color: white;
+    }
+
+    &.finished {
+      background-color: #679186;
+    }
+
+    &.cleaning {
+      background-color: #bbd4ce;
+    }
+
+    &.paid {
+      background-color: #257506;
+      color: white;
+    }
+  }
+
+  .content {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 85px);
+
+    h4, p {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      height: 70px;
+      width: 120px;
+      border: 3px solid rgba(128, 128, 128, 0);
+      border-radius: 6px;
+      background-color: #3a8fd5;
+      color: wheat;
+      cursor: pointer;
+
+      &.active, &:hover {
+        border: 3px solid #ffeb3b;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        border: 3px solid rgba(128, 128, 128, 0);
+        background-color: #a7a7a7a8;
+        color: rgb(228 228 228 / 60%);
+      }
+
+      span {
+        font-size: 40px;
+      }
+    }
+
+    textarea {
+      width: 96%;
+      height: 70px;
+      padding: 5px;
+      margin: 0;
+    }
+  }
+
+  .status-big {
+    font-size: 80px;
+    line-height: 80px;
+  }
+
+}

@@ -1,0 +1,69 @@
+:host {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: aquamarine;
+
+  padding: 0;
+  margin: 0;
+  background-size: cover;
+  background-image: url(https://512pixels.net/wp-content/uploads/2020/06/11-0-Color-Day-thumbnails.jpg);
+
+  .items {
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    overflow-x: scroll;
+    height: calc(100% - 150px);
+    width: calc(100% - 20px);
+
+    &.compact {
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: space-around;
+    width: 600px;
+    margin: auto;
+    padding: 15px;
+
+    button {
+      height: 70px;
+      width: 70px;
+      border: 3px solid rgba(128, 128, 128, 0);
+      border-radius: 6px;
+      background-color: #9f55e5a6;
+      color: wheat;
+      position: relative;
+      &.active, &:hover {
+        border: 3px solid #ffeb3b;
+      }
+
+      .badge {
+        position: absolute;
+        top: -20px;
+        left: -15px;
+        background-color: #6d6d6d;
+        color: wheat;
+        border-radius: 50%;
+        width: 30px;
+        font-size: 25px;
+      }
+      span {
+        font-size: 40px;
+      }
+    }
+  }
+}

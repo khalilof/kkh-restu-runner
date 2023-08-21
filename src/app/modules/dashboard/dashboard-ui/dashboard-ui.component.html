@@ -1,0 +1,52 @@
+<div [class.compact]="compactMode" class="items">
+  <app-dashboard-item (updateTable)="updateTableHandler($event)" *ngFor="let table of tables"
+                      [menu]="menuItems"
+                      [table]="table"></app-dashboard-item>
+</div>
+
+<div class="actions">
+
+  <button (click)="applyFilter(TableStatus.AVAILABLE)" [class.active]="filterValue === TableStatus.AVAILABLE">
+    <span class="badge">{{allTables | statusCounter: TableStatus.AVAILABLE}} </span>
+    <span class="material-symbols-outlined">event_available</span>
+    <br>
+    Available
+  </button>
+  <button (click)="applyFilter(TableStatus.ORDERING)" [class.active]="filterValue === TableStatus.ORDERING">
+    <span class="badge">{{allTables | statusCounter: TableStatus.ORDERING}} </span>
+    <span class="material-symbols-outlined">edit_note</span>
+    <br>
+    Ordering
+  </button>
+  <button (click)="applyFilter(TableStatus.ORDERED)" [class.active]="filterValue === TableStatus.ORDERED">
+    <span class="badge">{{allTables | statusCounter: TableStatus.ORDERED}} </span>
+    <span class="material-symbols-outlined">cooking</span>
+    <br>
+    Ordered
+  </button>
+  <button (click)="applyFilter(TableStatus.FINISHED)" [class.active]="filterValue === TableStatus.FINISHED">
+    <span class="badge">{{allTables | statusCounter: TableStatus.FINISHED}} </span>
+    <span class="material-symbols-outlined">done</span>
+    <br>
+    Finished
+  </button>
+  <button (click)="applyFilter(TableStatus.PAID)" [class.active]="filterValue === TableStatus.PAID">
+    <span class="badge">{{allTables | statusCounter: TableStatus.PAID}} </span>
+    <span class="material-symbols-outlined">paid</span>
+    <br>
+    Paid
+  </button>
+  <button (click)="applyFilter(TableStatus.CLEANING)" [class.active]="filterValue === TableStatus.CLEANING">
+    <span class="badge">{{allTables | statusCounter: TableStatus.CLEANING}} </span>
+    <span class="material-symbols-outlined">cleaning_services</span>
+    <br>
+    Cleaning
+  </button>
+
+
+  <button (click)="applyFilter('')">
+    <span class="material-symbols-outlined">filter_alt_off</span>
+    <br>
+    No Filter
+  </button>
+</div>
